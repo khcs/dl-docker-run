@@ -2,8 +2,8 @@
 # nvdrun.sh
 
 if [[ "$1" == "-h" ]] ; then
-    echo 'nvdrun.sh REGISTRY WORKGROUP FRAMEWORK VERSION WORKSPACE'
-    echo 'Example: nvdrun.sh XXXX.io tensorflow tensorflow 17.XX test'
+    echo 'nvdrun.sh REGISTRY WORKGROUP FRAMEWORK VERSION WORKSPACE [DATASET_DIR: optional]'
+    echo 'Example: nvdrun.sh XXXX.io tensorflow tensorflow 17.XX test [/tmp/datasets]'
     exit 0
 fi
 
@@ -32,6 +32,12 @@ if [[ $# -eq 4 ]] ; then
     exit 0
 fi
 
+if [[ $# -eq 5 ]] ; then
+    :
+else
+    dataset_dir=$6
+fi
+
 registry=$1
 workgroup=$2
 framework=$3
@@ -49,6 +55,12 @@ if [ ! -d ~/workspace/$workspace ]; then
 fi
 
 cp -r ~/workspace/$workspace /tmp/nvdrun/$framework
-nvidia-docker run -v /tmp/nvdrun/$framework:/home/workspace --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -ti -p 8888:8888 -p 6006:6006 $registry/$workgroup/$framework /bin/bash
+
+if [[ $# -eq 5 ]] ; then
+    nvidia-docker run -v /tmp/nvdrun/$framework:/home/workspace --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -ti -p 8888:8888 -p 6006:6006 $registry/$workgroup/$framework /bin/bash
+else
+    nvidia-docker run -v /tmp/nvdrun/$framework:/home/workspace -v $dataset_dir:/datasets --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -ti -p 8888:8888 -p 6006:6006 $registry/$workgroup/$framework /bin/bash
+fi
+
 cp -r /tmp/nvdrun/$framework ~/nvdruns/$framework
 rm ~/ipaddrs/"${framework}_docker.ipaddr"
