@@ -2,7 +2,7 @@
 # nvdrun.sh
 
 if [[ "$1" == "-h" ]] ; then
-    echo 'nvdrun.sh REGISTRY FRAMEWORK VERSION WORKSPACE'
+    echo 'nvdrun.sh REGISTRY WORKGROUP FRAMEWORK VERSION WORKSPACE'
     echo 'Example: nvdrun.sh XXXX.io tensorflow tensorflow 17.XX test'
 fi
 
