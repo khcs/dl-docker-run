@@ -6,7 +6,7 @@ It creates a container with TensorFlow, PyTorch, Caffe2, and pushes to registry.
 
 Run 
 ```bash
-'sh create_my_dockerfile.sh -h' 
+sh create_my_dockerfile.sh -h
 ```
 to see the options.
 
