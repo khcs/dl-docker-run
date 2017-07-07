@@ -32,17 +32,17 @@ if [[ $# -eq 4 ]] ; then
     exit 0
 fi
 
-if [[ $# -eq 5 ]] ; then
-    :
-else
-    dataset_dir=$6
-fi
-
 registry=$1
 workgroup=$2
 framework=$3
 version=$4
 workspace=$5
+
+if [[ $# -eq 5 ]] ; then
+    :
+else
+    dataset_dir=$6
+fi
 
 mkdir -p /tmp/nvdrun/$framework
 mkdir -p ~/ipaddrs
