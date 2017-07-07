@@ -12,24 +12,29 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 if [[ $# -eq 1 ]] ; then
-    echo 'framework arg missing! - ttensorflow, caffe2, etc.'
+    echo 'workgroup arg missing! - tensorflow, nvidian, etc.'
     exit 0
 fi
 
 if [[ $# -eq 2 ]] ; then
-    echo 'framework version arg missing! - 17.XX, latest, etc.'
+    echo 'framework arg missing! - tensorflow, caffe2, etc.'
     exit 0
 fi
 
 if [[ $# -eq 3 ]] ; then
+    echo 'framework version arg missing! - 17.XX, latest, etc.'
+    exit 0
+fi
+
+if [[ $# -eq 4 ]] ; then
     echo 'workspace arg missing! - workspace/$arg'
     exit 0
 fi
 
 registry=$1
-framework=$2
-version=$3
-workspace=$4
+framework=$3
+version=$4
+workspace=$5
 
 echo "${framework}_docker"
 
@@ -43,6 +48,6 @@ if [ ! -d ~/workspace/$workspace ]; then
 fi
 
 cp -r ~/workspace/$workspace /tmp/nvdrun/$framework
-nvidia-docker run -v /tmp/hshin/$framework:/home/workspace --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -ti --rm $registry/$framework /bin/bash
+nvidia-docker run -v /tmp/hshin/$framework:/home/workspace --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -ti --rm $registry/$workgroup/$framework /bin/bash
 cp -r /tmp/hshin/$2 /datasets/flower_photos/tmp/$framework
 rm ~/ipaddrs/"${framework}_docker.ipaddr"
