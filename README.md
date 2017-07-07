@@ -19,6 +19,6 @@ Worked files is stored in ~/nvdruns.
 
 Run 
 ```bash
-nvdrun.sh -h
+sh nvdrun.sh -h
 ```
 to see the options.
