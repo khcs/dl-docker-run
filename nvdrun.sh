@@ -33,11 +33,10 @@ if [[ $# -eq 4 ]] ; then
 fi
 
 registry=$1
+workgroup=$2
 framework=$3
 version=$4
 workspace=$5
-
-echo "${framework}_docker"
 
 mkdir -p /tmp/nvdrun/$framework
 mkdir -p ~/ipaddrs
