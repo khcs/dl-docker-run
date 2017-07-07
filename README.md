@@ -5,9 +5,10 @@ Deep learning docker build and run
 It creates a container with TensorFlow, PyTorch, Caffe2, and pushes to registry.
 
 Run 
-```
+```bash
 'sh create_my_dockerfile.sh -h' 
-```to see the options.
+```
+to see the options.
 
 ## nvdrun.sh
 'nvidia-docker run' abstracting some inputs, and some helper functions to keep track of the run container.
@@ -17,7 +18,7 @@ IP address of the running container is stored in ~/ipaddrs.
 Worked files is stored in ~/nvdruns.
 
 Run 
-```
+```bash
 nvdrun.sh -h
 ```
 to see the options.
