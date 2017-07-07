@@ -2,7 +2,7 @@
 Deep learning docker build and run
 
 ## create_my_dockerfile.sh
-It creates a container with TensorFlow, PyTorch, Caffe2, and pushes to registry.
+It creates a container with TensorFlow, PyTorch, Caffe2, and pushes to it a registry.
 
 Run 
 ```bash
