@@ -4,6 +4,7 @@
 if [[ "$1" == "-h" ]] ; then
     echo 'nvdrun.sh REGISTRY WORKGROUP FRAMEWORK VERSION WORKSPACE'
     echo 'Example: nvdrun.sh XXXX.io tensorflow tensorflow 17.XX test'
+    exit 0
 fi
 
 if [[ $# -eq 0 ]] ; then
