@@ -3,7 +3,7 @@
 
 if [[ "$1" == "-h" ]] ; then
     echo 'nvdrun.sh REGISTRY FRAMEWORK VERSION WORKSPACE'
-    echo 'Example: nvdrun.sh XXXX.io caffe2 17.07 test'
+    echo 'Example: nvdrun.sh XXXX.io tensorflow tensorflow 17.XX test'
 fi
 
 if [[ $# -eq 0 ]] ; then
