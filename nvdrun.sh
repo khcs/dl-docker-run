@@ -49,6 +49,6 @@ if [ ! -d ~/workspace/$workspace ]; then
 fi
 
 cp -r ~/workspace/$workspace /tmp/nvdrun/$framework
-nvidia-docker run -v /tmp/nvdrun/$framework:/home/workspace --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -ti --rm $registry/$workgroup/$framework /bin/bash
+nvidia-docker run -v /tmp/nvdrun/$framework:/home/workspace --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -ti -p 8888:8888 $registry/$workgroup/$framework /bin/bash
 cp -r /tmp/nvdrun/$framework ~/nvdruns/$framework
 rm ~/ipaddrs/"${framework}_docker.ipaddr"
