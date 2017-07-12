@@ -1,2 +1,3 @@
 # install additional Python packages
 RUN pip install keras matplotlib h5py jupyter scikit-image pandas opencv-python seaborn plotly future
+RUN apt-get install vim
