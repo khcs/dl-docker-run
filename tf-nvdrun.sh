@@ -14,7 +14,7 @@ fi
 
 framework=tensorflow
 workgroup=tensorflow
-tag=latest-devel-gpu-py3
+tag=latest-gpu-py3
 workspace=$1
 
 if [[ $# -eq 1 ]] ; then
