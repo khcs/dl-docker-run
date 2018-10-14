@@ -56,7 +56,7 @@ fi
 
 if [[ $# -eq 5 ]] ; then
     rsync -rv --exclude=.git ~/workspace/$workspace /tmp/nvdrun/$framework > /dev/null 2>&1
-    nvidia-docker run -v /tmp/nvdrun/$framework:/home/workspace --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -ti -p 8888:8888 -p 6006:6006 $registry/$workgroup/$framework:$tag /bin/bash
+    nvidia-docker run -v /tmp/nvdrun/$framework:/home/workspace --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -ti -p 8888:8888 -p 6006:6006 $registry/$workgroup/$framework:$tag /bin/bash
 else
 
     if [ ! -d $dataset_dir ]; then
@@ -65,7 +65,7 @@ else
     fi
     
     rsync -rv --exclude=.git ~/workspace/$workspace /tmp/nvdrun/$framework > /dev/null 2>&1
-    nvidia-docker run -v /tmp/nvdrun/$framework:/home/workspace -v $dataset_dir:/datasets --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -ti -p 8888:8888 -p 6006:6006 $registry/$workgroup/$framework:$tag /bin/bash
+    nvidia-docker run -v /tmp/nvdrun/$framework:/home/workspace -v $dataset_dir:/datasets --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -ti -p 8888:8888 -p 6006:6006 $registry/$workgroup/$framework:$tag /bin/bash
 fi
 
 rsync -rv --exclude=.git /tmp/nvdrun/$framework ~/nvdruns > /dev/null 2>&1
